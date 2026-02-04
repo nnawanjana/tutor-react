@@ -8,7 +8,11 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Badge } from "@/shared/ui/badge";
 
-export const Dashboard = () => {
+interface DashboardProps {
+  title?: string; // The ? makes it optional
+}
+
+export const Dashboard = ({ title }: DashboardProps) => {
   return (
     <div className="space-y-8">
       {/* --- Header Section --- */}

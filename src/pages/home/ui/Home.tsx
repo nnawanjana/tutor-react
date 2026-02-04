@@ -11,7 +11,11 @@ import { Button } from "@/shared/ui/button";
 import { Badge } from "@/shared/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/shared/ui/card";
 
-export const Home = () => {
+interface HomeProps {
+  title?: string; 
+}
+
+export const Home = ({ title }: HomeProps) => {
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 space-y-24">
       
