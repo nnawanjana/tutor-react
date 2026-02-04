@@ -24,7 +24,7 @@ This project is built using professional-grade standards to ensure scalability f
 ## Getting Started
 
 1. Clone the repository:
-   git clone https://github.com/organization/tutor.git
+   git clone https://github.com/Hexnity/tutor-react.git
 
 2. Install dependencies:
    npm install
