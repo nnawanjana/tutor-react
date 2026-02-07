@@ -1,13 +1,13 @@
-import { Input } from "@/shared/ui/input";
-import { Button } from "@/shared/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
-import { Label } from "@/shared/ui/label";
 import { Badge } from "@/shared/ui/badge";
-
-
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card";
+import { RegisterForm } from "./RegisterForm";
 
 export const Register = () => {
+    const handleSuccess = () => {
+        // redirect or msg
+        console.log("Registration successful!");
+    };
+
     return (
         <div className="max-w-6xl mx-auto px-6 py-12 space-y-5">
             {/* Register Section */}
@@ -32,26 +32,9 @@ export const Register = () => {
                         <CardHeader>
                             <CardTitle className="text-2xl">Create Account</CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="name">Full Name</Label>
-                                <Input id="name" placeholder="John Doe" />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="email">Email Address</Label>
-                                <Input id="email" type="email" placeholder="student@example.com" />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="password">Password</Label>
-                                <Input id="password" type="password" />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="confirm-password">Confirm Password</Label>
-                                <Input id="confirm-password" type="password" />
-                            </div>
-                            <Button size="lg" className="w-full rounded-full shadow-lg shadow-blue-200 mt-2">
-                                Create Account
-                            </Button>
+                        <CardContent>
+                            <RegisterForm onSuccess={handleSuccess} />
+                            
                             <div className="mt-4 text-center text-sm text-slate-500">
                                 Already have an account?{" "}
                                 <a href="#" className="font-medium text-blue-600 hover:text-blue-500 hover:underline transition-colors">
@@ -62,6 +45,7 @@ export const Register = () => {
                     </Card>
                 </div>
             </section>
+
             {/* --- Simple Footer --- */}
             <footer className="pt-20 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-400 text-sm">
                 <p>© 2026 John Doe Education. All rights reserved.</p>
@@ -72,5 +56,5 @@ export const Register = () => {
                 </div>
             </footer>
         </div>
-    )
-}
+    );
+};

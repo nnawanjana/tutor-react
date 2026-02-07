@@ -5,7 +5,7 @@ import { MainLayout } from "@/shared/layouts/MainLayout";
 // Import pages from their Public APIs
 import { HomePage } from "@/pages/home";
 import { DashboardPage } from "@/pages/admin/dashboard";
-import { RegisterPage } from "@/pages/register";
+import { RegisterPage } from "@/pages/auth/register";
 
 export const router = createBrowserRouter([
   {
@@ -16,10 +16,6 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage title="Home" />,
-      },
-      {
-        path: "register",
-        element: <RegisterPage />,
       },
       // Future routes like /profile or /about go here
     ],
@@ -35,4 +31,13 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "/auth",
+    children: [
+      {
+        path: "register",
+        element: <RegisterPage />,
+      }
+    ]
+  }
 ]);
