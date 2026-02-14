@@ -10,19 +10,34 @@ export const RecentActivityCard = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        let isCancelled = false;
+
         const fetchActivities = async () => {
             try {
-                setLoading(true);
+                if (!isCancelled) {
+                    setLoading(true);
+                }
                 const data = await getRecentActivities();
+                if (isCancelled) {
+                    return;
+                }
                 setActivities(data);
             } catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to load activities');
+                if (!isCancelled) {
+                    setError(err instanceof Error ? err.message : "Failed to load activities");
+                }
             } finally {
-                setLoading(false);
+                if (!isCancelled) {
+                    setLoading(false);
+                }
             }
         };
 
         fetchActivities();
+
+        return () => {
+            isCancelled = true;
+        };
     }, []);
 
     if (loading) {
