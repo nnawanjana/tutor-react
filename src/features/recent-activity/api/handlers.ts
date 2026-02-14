@@ -2,7 +2,9 @@ import type { RecentActivities } from '../model/types';
 
 
 export const getRecentActivities = async (): Promise<RecentActivities> => {
-    await new Promise(resolve => setTimeout(resolve, 350));
+    if (typeof process !== 'undefined' && process.env?.NODE_ENV === 'development') {
+        await new Promise(resolve => setTimeout(resolve, 350));
+    }
 
     return [
         { title: 'Updated profile information', date: '2024-07-29 10:30 AM' },
