@@ -11,19 +11,33 @@ export const PermissionsRolesCard = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        let cancelled = false;
+
         const fetchRoles = async () => {
             try {
-                setLoading(true);
+                if (!cancelled) {
+                    setLoading(true);
+                }
                 const data = await getPermissionsRoles();
-                setRoles(data);
+                if (!cancelled) {
+                    setRoles(data);
+                }
             } catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to load roles');
+                if (!cancelled) {
+                    setError(err instanceof Error ? err.message : 'Failed to load roles');
+                }
             } finally {
-                setLoading(false);
+                if (!cancelled) {
+                    setLoading(false);
+                }
             }
         };
 
         fetchRoles();
+
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
     if (loading) {
