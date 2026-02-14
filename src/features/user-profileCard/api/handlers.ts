@@ -1,8 +1,6 @@
 import type { UserProfile } from '../model/types';
 
 export const getUserProfile = async (): Promise<UserProfile> => {
-    await new Promise(resolve => setTimeout(resolve, 500));
-
     return {
         id: '1',
         name: 'Alex Johnson',
